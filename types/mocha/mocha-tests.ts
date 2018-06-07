@@ -3,10 +3,8 @@ import {
     before as importedBefore,
     afterEach as importedAfterEach,
     beforeEach as importedBeforeEach,
-    context as importedContext,
     describe as importedDescribe,
     it as importedIt,
-    xdescribe as importedXdescribe,
     xit as importedXit
 } from 'mocha';
 
@@ -45,14 +43,10 @@ const _afterEach: typeof afterEach = importedAfterEach;
 const _afterEach2: typeof importedAfterEach = afterEach;
 const _beforeEach: typeof beforeEach = importedBeforeEach;
 const _beforeEach2: typeof importedBeforeEach = beforeEach;
-const _context: typeof context = importedContext;
-const _context2: typeof importedContext = context;
 const _describe: typeof describe = importedDescribe;
 const _describe2: typeof importedDescribe = describe;
 const _it: typeof it = importedIt;
 const _it2: typeof importedIt = it;
-const _xdescribe: typeof xdescribe = importedXdescribe;
-const _xdescribe2: typeof importedXdescribe = xdescribe;
 const _xit: typeof xit = importedXit;
 const _xit2: typeof importedXit = xit;
 
@@ -731,8 +725,11 @@ function test_Context(ctx: LocalMocha.Context, runnable: LocalMocha.Runnable) {
     // $ExpectType Context
     ctx.timeout(number);
 
-    // $ExpectType Test
+    // $ExpectType Test | undefined
     ctx.currentTest;
+
+    // $ExpectType Runnable | undefined
+    ctx.test;
 
     ctx["extended"] = any;
 
